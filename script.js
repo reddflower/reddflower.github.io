@@ -7,6 +7,15 @@ if (button) {
 }
 
 // Проверяем кнопку перехода на test.html
+const btnIndex = document.getElementById('btnIndex');
+if (btnIndex) {
+    btnIndex.addEventListener('click', function() {
+        window.location.href = '/index.html'; 
+    });
+}
+
+
+// Проверяем кнопку перехода на test.html
 const btnTest = document.getElementById('btnTest');
 if (btnTest) {
     btnTest.addEventListener('click', function() {
