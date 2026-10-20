@@ -1,23 +1,20 @@
-/* Стили для всей страницы */
 body {
-    background-color: #2c3e50; /* Темный фон */
-    color: #ffffff;            /* Белый текст */
+    background-color: #2c3e50; 
+    color: #ffffff;            
     font-family: Arial, sans-serif;
     padding: 20px;
 }
 
-/* Стили для кнопки */
 button {
-    background-color: #2ecc71; /* Зеленый цвет */
+    background-color: #2ecc71; 
     color: white;
     border: none;
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
-    border-radius: 5px; /* Скругленные углы */
+    border-radius: 5px; 
 }
 
-/* Эффект при наведении на кнопку */
 button:hover {
-    background-color: #27ae60; /* Чуть темнее при наведении */
+    background-color: #27ae60; 
 }
