@@ -56,5 +56,51 @@
 		<button id="btnFolderTest">folder/test.html</button>
     </main>
  <script src="/script.js"></script>
+
+
+	   
+    <h1>Тестирование авторизации через GitHub</h1>
+    <button id="loginBtn">Войти через GitHub</button>
+
+    <script type="module">
+        // Импортируем нужные модули напрямую из официального CDN Google
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+        import { getAuth, signInWithPopup, GithubAuthProvider } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-analytics.js";
+
+        // Твоя готовая конфигурация Firebase
+        const firebaseConfig = {
+          apiKey: "AIzaSyBKtb1LapCHWCi6cr2N4sW8vvP1rps9SH4",
+          authDomain: "reddflower-project.firebaseapp.com",
+          projectId: "reddflower-project",
+          storageBucket: "reddflower-project.firebasestorage.app",
+          messagingSenderId: "351471908884",
+          appId: "1:351471908884:web:833853d43fe7df0d94cf01",
+          measurementId: "G-40P2WPJSY4"
+        };
+
+        // Инициализируем Firebase и Аналитику
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        
+        // Инициализируем сервис аутентификации
+        const auth = getAuth(app);
+        const provider = new GithubAuthProvider();
+
+        // Привязываем событие авторизации к кнопке на странице
+        const button = document.getElementById("loginBtn");
+        button.addEventListener("click", () => {
+            signInWithPopup(auth, provider)
+                .then((result) => {
+                    const user = result.user;
+                    console.log("Успешный вход:", user);
+                    alert(`Успешно! Рад видеть тебя, ${user.displayName || "пользователь"}!`);
+                })
+                .catch((error) => {
+                    console.error("Ошибка при авторизации:", error);
+                    alert("Произошла ошибка: " + error.message);
+                });
+        });
+    </script>
 </body>
 </html>
