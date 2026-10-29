@@ -58,14 +58,16 @@
  <script src="/script.js"></script>
 
 
-	   
-    <h1>Тестирование авторизации через GitHub</h1>
+	       <h1>Тестирование авторизации через GitHub и Google</h1>
     <button id="loginBtn">Войти через GitHub</button>
+    <!-- Добавили кнопку для Google -->
+    <button id="loginGoogleBtn">Войти через Google</button>
 
     <script type="module">
         // Импортируем нужные модули напрямую из официального CDN Google
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-        import { getAuth, signInWithPopup, GithubAuthProvider } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+        // Добавили GoogleAuthProvider в импорт
+        import { getAuth, signInWithPopup, GithubAuthProvider, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
         import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-analytics.js";
 
         // Твоя готовая конфигурация Firebase
@@ -85,22 +87,40 @@
         
         // Инициализируем сервис аутентификации
         const auth = getAuth(app);
-        const provider = new GithubAuthProvider();
+        const githubProvider = new GithubAuthProvider();
+        // Создаем провайдер для Google
+        const googleProvider = new GoogleAuthProvider();
 
-        // Привязываем событие авторизации к кнопке на странице
-        const button = document.getElementById("loginBtn");
-        button.addEventListener("click", () => {
-            signInWithPopup(auth, provider)
+        // Авторизация через GitHub
+        const githubButton = document.getElementById("loginBtn");
+        githubButton.addEventListener("click", () => {
+            signInWithPopup(auth, githubProvider)
                 .then((result) => {
                     const user = result.user;
-                    console.log("Успешный вход:", user);
+                    console.log("Успешный вход через GitHub:", user);
                     alert(`Успешно! Рад видеть тебя, ${user.displayName || "пользователь"}!`);
                 })
                 .catch((error) => {
-                    console.error("Ошибка при авторизации:", error);
-                    alert("Произошла ошибка: " + error.message);
+                    console.error("Ошибка при авторизации GitHub:", error);
+                    alert("Произошла ошибка GitHub: " + error.message);
+                });
+        });
+
+        // Авторизация через Google
+        const googleButton = document.getElementById("loginGoogleBtn");
+        googleButton.addEventListener("click", () => {
+            signInWithPopup(auth, googleProvider)
+                .then((result) => {
+                    const user = result.user;
+                    console.log("Успешный вход через Google:", user);
+                    alert(`Успешно! Рад видеть тебя, ${user.displayName || "пользователь"}!`);
+                })
+                .catch((error) => {
+                    console.error("Ошибка при авторизации Google:", error);
+                    alert("Произошла ошибка Google: " + error.message);
                 });
         });
     </script>
+
 </body>
 </html>
