@@ -1,4 +1,4 @@
- <html lang="ru">
+<html lang="ru">
    <head>
     <meta charset="UTF-8">
     <title>index.html</title>
@@ -63,6 +63,8 @@
     <!-- Добавили кнопку для Google -->
     <button id="loginGoogleBtn">Войти через Google</button>
 
+    <button id="logOutBtn">Выйти</button>
+
     <script type="module">
         // Импортируем нужные модули напрямую из официального CDN Google
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
@@ -119,7 +121,28 @@
                     console.error("Ошибка при авторизации Google:", error);
                     alert("Произошла ошибка Google: " + error.message);
                 });
-        });
+
+		
+		logOutBtn.addEventListener('click', () => {
+			signOut(auth)
+				.then(() => console.log("Вы вышли из аккаунта"))
+				.catch((error) => console.error("Ошибка при выходе:", error));
+		});
+
+			  // Слушатель состояния авторизации (меняет интерфейс в зависимости от статуса)
+ 		 onAuthStateChanged(auth, (user) => {
+   			 if (user) {
+     			 userStatus.textContent = `Вы вошли как: ${user.displayName || user.email}`;
+     			 loginGoogleBtn.style.display = 'none';
+     			 loginGithubBtn.style.display = 'none';
+     			 logOutBtn.style.display = 'inline-block';
+    		} else {
+    			  userStatus.textContent = "Вы не авторизованы";
+    			  loginGoogleBtn.style.display = 'inline-block';
+    			  loginGithubBtn.style.display = 'inline-block';
+    			  logOutBtn.style.display = 'none';
+   			 }
+  });
     </script>
 
 </body>
