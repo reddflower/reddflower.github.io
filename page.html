@@ -1,0 +1,157 @@
+<html lang="ru">
+   <head>
+    <meta charset="UTF-8">
+    <title>index.html</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+	<link rel="icon" href="/file.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+   </head>
+   <body>
+    <div class="ROW"> 
+      <div class="col-4 border bg-success"> 1 </div> 
+      <div class="col-4 border bg-danger"> 2 </div> 
+      <div class="col-4 border bg-warning"> 3 </div> 
+    </div>
+    <div class="col-12 border bg-info"> 4 </div>
+    <div id="footer">
+      <div class="ROW"> 
+       <div class="col-6 border", style="background-color:blue"> 5 </div> 
+       <div class="col-6 border", style="background-color:blueviolet"> 6 </div> 
+      </div>
+    </div>
+<table border="1" width="100%">
+  <tr>
+      <td colspan="5">Шапка сайта</td>
+  </tr>
+
+  <tr>
+      <td>
+          <ul>
+              <li><a href="#">Главная</a></li>
+              <li><a href="#">О нас</a></li>
+              <li><a href="#">Контакты</a></li>
+          </ul>
+      </td>
+    </td colspan="5">
+     Подвал сайта
+  </td>
+  </tr>
+  <tr>
+   <td>
+    <p> Текст страницы</p>  
+   </td>
+   <td colspan="4">
+    <img src="images/wallpaper_1.png" alt="Крутые обои с кощк-магом с майнкарфта" width="600" height="375">
+    <img src="images/wallpaper_4.png" alt="Крутые обои с обычным кощькм майнкарфта" width="600" height="375">
+	<img src="images/wallpaper_6.png" alt="Крутые обои с кощьк не смотрят на взрывы" width="600" height="375">
+    <img src="images/wallpaper_7.jpg" alt="Крутые обои с кощьк волшебником" width="600" height="375"> 
+  </td>
+  </tr>
+</table>
+<main>
+        <p>Текст страницы</p>
+        <button id="myButton">Нажми меня</button>
+			<!-- Кнопка 1: ведет на test.html -->
+			<!-- 89f56fde5e8d8bdc5e8435f73245f706a1da4309 -->
+		<button id="btnTest">test.html</button>
+
+			<!-- Кнопка 2: ведет на folder/test.html -->
+		<button id="btnFolderTest">folder/test.html</button>
+    </main>
+ <script src="/script.js"></script>
+
+
+	       <h1>Тестирование авторизации через GitHub и Google</h1>
+    <button id="loginBtn">Войти через GitHub</button>
+    <!-- Добавили кнопку для Google -->
+    <button id="loginGoogleBtn">Войти через Google</button>
+
+    <button id="logOutBtn">Выйти</button>
+
+    <script type="module">
+        // Импортируем нужные модули напрямую из официального CDN Google
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+        // Добавили GoogleAuthProvider в импорт
+        import { getAuth, signInWithPopup, GithubAuthProvider, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-analytics.js";
+
+        // Твоя готовая конфигурация Firebase
+        const firebaseConfig = {
+          apiKey: "AIzaSyBKtb1LapCHWCi6cr2N4sW8vvP1rps9SH4",
+          authDomain: "reddflower-project.firebaseapp.com",
+          projectId: "reddflower-project",
+          storageBucket: "reddflower-project.firebasestorage.app",
+          messagingSenderId: "351471908884",
+          appId: "1:351471908884:web:833853d43fe7df0d94cf01",
+          measurementId: "G-40P2WPJSY4"
+        };
+
+        // Инициализируем Firebase и Аналитику
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        
+        // Инициализируем сервис аутентификации
+        const auth = getAuth(app);
+        const githubProvider = new GithubAuthProvider();
+        // Создаем провайдер для Google
+        const googleProvider = new GoogleAuthProvider();
+
+        // Авторизация через GitHub
+        const githubButton = document.getElementById("loginBtn");
+        githubButton.addEventListener("click", () => {
+            signInWithPopup(auth, githubProvider)
+                .then((result) => {
+                    const user = result.user;
+                    console.log("Успешный вход через GitHub:", user);
+                    alert(`Успешно! Рад видеть тебя, ${user.displayName || "пользователь"}!`);
+                })
+                .catch((error) => {
+                    console.error("Ошибка при авторизации GitHub:", error);
+                    alert("Произошла ошибка GitHub: " + error.message);
+                });
+        });
+
+        // Авторизация через Google
+        const googleButton = document.getElementById("loginGoogleBtn");
+        googleButton.addEventListener("click", () => {
+            signInWithPopup(auth, googleProvider)
+                .then((result) => {
+                    const user = result.user;
+                    console.log("Успешный вход через Google:", user);
+                    alert(`Успешно! Рад видеть тебя, ${user.displayName || "пользователь"}!`);
+                })
+                .catch((error) => {
+                    console.error("Ошибка при авторизации Google:", error);
+                    alert("Произошла ошибка Google: " + error.message);
+                });
+
+		
+		logOutBtn.addEventListener('click', () => {
+			signOut(auth)
+				.then(() => console.log("Вы вышли из аккаунта"))
+				.catch((error) => console.error("Ошибка при выходе:", error));
+		});
+
+			  // Слушатель состояния авторизации (меняет интерфейс в зависимости от статуса)
+ 		 onAuthStateChanged(auth, (user) => {
+   			 if (user) {
+     			 userStatus.textContent = `Вы вошли как: ${user.displayName || user.email}`;
+     			 loginGoogleBtn.style.display = 'none';
+     			 loginGithubBtn.style.display = 'none';
+     			 logOutBtn.style.display = 'inline-block';
+    		} else {
+    			  userStatus.textContent = "Вы не авторизованы";
+    			  loginGoogleBtn.style.display = 'inline-block';
+    			  loginGithubBtn.style.display = 'inline-block';
+    			  logOutBtn.style.display = 'none';
+   			 }
+ 		 });
+  });
+    </script>
+
+<iframe src="https://discord.com/widget?id=1075499251695636490&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+<iframe src="https://discord.com/widget?id=1478538078040887389&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+
+
+</body>
+</html>
