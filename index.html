@@ -1,157 +1,109 @@
-<html lang="ru">
-   <head>
-    <meta charset="UTF-8">
-    <title>index.html</title>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-	<link rel="icon" href="/file.png" type="image/png">
-    <link rel="stylesheet" href="style.css">
-   </head>
-   <body>
-    <div class="ROW"> 
-      <div class="col-4 border bg-success"> 1 </div> 
-      <div class="col-4 border bg-danger"> 2 </div> 
-      <div class="col-4 border bg-warning"> 3 </div> 
-    </div>
-    <div class="col-12 border bg-info"> 4 </div>
-    <div id="footer">
-      <div class="ROW"> 
-       <div class="col-6 border", style="background-color:blue"> 5 </div> 
-       <div class="col-6 border", style="background-color:blueviolet"> 6 </div> 
-      </div>
-    </div>
-<table border="1" width="100%">
-  <tr>
-      <td colspan="5">Шапка сайта</td>
-  </tr>
+<!DOCTYPE html> 
+<html lang="ru"> 
+<head> 
+<meta charset="UTF-8"> 
+<meta name="viewport" content="width=device-width, initial scale=1.0"> 
+<title>Название страницы</title> 
+	<style> 
+body { margin: 0; background: #4b946b; font-family: Arial, sans serif; } 
 
-  <tr>
-      <td>
-          <ul>
-              <li><a href="#">Главная</a></li>
-              <li><a href="#">О нас</a></li>
-              <li><a href="#">Контакты</a></li>
-          </ul>
-      </td>
-    </td colspan="5">
-     Подвал сайта
-  </td>
-  </tr>
-  <tr>
-   <td>
-    <p> Текст страницы</p>  
-   </td>
-   <td colspan="4">
-    <img src="images/wallpaper_1.png" alt="Крутые обои с кощк-магом с майнкарфта" width="600" height="375">
-    <img src="images/wallpaper_4.png" alt="Крутые обои с обычным кощькм майнкарфта" width="600" height="375">
-	<img src="images/wallpaper_6.png" alt="Крутые обои с кощьк не смотрят на взрывы" width="600" height="375">
-    <img src="images/wallpaper_7.jpg" alt="Крутые обои с кощьк волшебником" width="600" height="375"> 
-  </td>
-  </tr>
-</table>
-<main>
-        <p>Текст страницы</p>
-        <button id="myButton">Нажми меня</button>
-			<!-- Кнопка 1: ведет на test.html -->
-			<!-- 89f56fde5e8d8bdc5e8435f73245f706a1da4309 -->
-		<button id="btnTest">test.html</button>
+main { max-width: 900px; margin: 30px auto; padding: 24px; background: white; border-radius: 20px} 
 
-			<!-- Кнопка 2: ведет на folder/test.html -->
-		<button id="btnFolderTest">folder/test.html</button>
-    </main>
- <script src="/script.js"></script>
+h1 , h2{ color: #21463d; } 
+
+.gallery { display: flex; flex-wrap: wrap; gap: 14px; } 
+
+figure { flex: 1 1 240px; margin: 0; } 
+
+img { width: 100%; height: auto; border-radius: 18px; } 
+
+img:hover { border-radius: 17px; }
+
+figcaption { margin-top: 6px; text-align: center; } 
+
+.facts { margin: 24px 0; padding: 18px; border: 7px solid #2f5d50; } 
+
+.button { display: inline-block; padding: 10px 18px; border-radius: 6px; background: #2f5d50; color: white; } 
+
+.button:hover { background: #173d34; border-radius: 106px; } 
+
+footer { margin-top: 28px; color: #555; } 
+
+	</style> 
+</head> 
+
+<body> 
+	<main> 
+	
+	<h1>Мой город - Санкт-Петербургер</h1> 
+	<h2 id="info">Краткая информация, плейсхолдер</h2> 
+
+	<p>Казанский собор в Санкт-Петербурге (Казанская площадь, 2) — действующий православный храм и памятник русского классицизма, построенный в 1801–1811 годах по проекту архитектора Андрея Воронихина как храм воинской славы и место хранения чтимого списка Казанской иконы Божией Матери.</p>  
+	<p>Вход бесплатный</p> 
 
 
-	       <h1>Тестирование авторизации через GitHub и Google</h1>
-    <button id="loginBtn">Войти через GitHub</button>
-    <!-- Добавили кнопку для Google -->
-    <button id="loginGoogleBtn">Войти через Google</button>
+	<h2 id="history">История, плейсхолдер</h2> 
+	<p>Замысел и строительство: Храм возвели на месте церкви Рождества Богородицы. По пожеланию императора Павла I облик здания должен был перекликаться с собором Святого Петра в Риме. Торжественное освящение прошло в 1811 году</p> 
+	<p>Отечественная война 1812 года: В соборе молился перед отъездом к войскам Михаил Кутузов; после смерти в 1813 году его похоронили здесь, а в храме разместили трофейные знамёна и ключи от взятых городов. В 1837 году перед собором установили памятники Кутузову и Барклаю де Толли работы Бориса Орловского.</p> 
+	<p>Советский период и возрождение: После закрытия в советское время с 1932 года в здании работал Музей истории религии и атеизма. Богослужения возобновились в 1991 году, а с 2000 года собор носит статус кафедрального собора Санкт-Петербургской епархии.</p> 
+	
+	<p>сОбора, а не сАбора, БЕСТОЛОЧЬ</p>
+	<h2 id="gallery">Галерея</h2>
+ 
+<section class="gallery"> 
+<figure>
+	<img src="images/kazan_1.jpg" alt="Казанский собор"> 
+	<figcaption>Казанский собор</figcaption>
+</figure> 
 
-    <button id="logOutBtn">Выйти</button>
+<figure>
+	<img src="images/kazan_2.jpg" alt="Казанский собор"> 
+	<figcaption>Ого! Казанский собор</figcaption>
+</figure> 
 
-    <script type="module">
-        // Импортируем нужные модули напрямую из официального CDN Google
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-        // Добавили GoogleAuthProvider в импорт
-        import { getAuth, signInWithPopup, GithubAuthProvider, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-analytics.js";
+<figure>
+	<img src="images/kazan_3.jpg" alt="Казанский собор"> 
+	<figcaption>Башня Казанского собора</figcaption>
+</figure> 
 
-        // Твоя готовая конфигурация Firebase
-        const firebaseConfig = {
-          apiKey: "AIzaSyBKtb1LapCHWCi6cr2N4sW8vvP1rps9SH4",
-          authDomain: "reddflower-project.firebaseapp.com",
-          projectId: "reddflower-project",
-          storageBucket: "reddflower-project.firebasestorage.app",
-          messagingSenderId: "351471908884",
-          appId: "1:351471908884:web:833853d43fe7df0d94cf01",
-          measurementId: "G-40P2WPJSY4"
-        };
+<figure>
+	<img src="images/wallpaper_1.png" alt="кощьк в шляпе"> 
+	<figcaption>Крутой кощьк</figcaption>
+</figure> 
 
-        // Инициализируем Firebase и Аналитику
-        const app = initializeApp(firebaseConfig);
-        const analytics = getAnalytics(app);
-        
-        // Инициализируем сервис аутентификации
-        const auth = getAuth(app);
-        const githubProvider = new GithubAuthProvider();
-        // Создаем провайдер для Google
-        const googleProvider = new GoogleAuthProvider();
+<figure>
+	<img src="images/wallpaper_2.png" alt="кощьк"> 
+	<figcaption>Просто кощьк (НЕ СОБОР)</figcaption>
+</figure> 
 
-        // Авторизация через GitHub
-        const githubButton = document.getElementById("loginBtn");
-        githubButton.addEventListener("click", () => {
-            signInWithPopup(auth, githubProvider)
-                .then((result) => {
-                    const user = result.user;
-                    console.log("Успешный вход через GitHub:", user);
-                    alert(`Успешно! Рад видеть тебя, ${user.displayName || "пользователь"}!`);
-                })
-                .catch((error) => {
-                    console.error("Ошибка при авторизации GitHub:", error);
-                    alert("Произошла ошибка GitHub: " + error.message);
-                });
-        });
+<figure>
+	<a href="https://reddflower.github.io"> 
+		<img src="images/wallpaper_3.png" alt="не собор"> 
+	</a>
+	<figcaption>И это тоже не собор</figcaption>
+</figure> 
 
-        // Авторизация через Google
-        const googleButton = document.getElementById("loginGoogleBtn");
-        googleButton.addEventListener("click", () => {
-            signInWithPopup(auth, googleProvider)
-                .then((result) => {
-                    const user = result.user;
-                    console.log("Успешный вход через Google:", user);
-                    alert(`Успешно! Рад видеть тебя, ${user.displayName || "пользователь"}!`);
-                })
-                .catch((error) => {
-                    console.error("Ошибка при авторизации Google:", error);
-                    alert("Произошла ошибка Google: " + error.message);
-                });
+</section> 
+<section class="facts"> 
+<h2>Интересные факты</h2> 
 
-		
-		logOutBtn.addEventListener('click', () => {
-			signOut(auth)
-				.then(() => console.log("Вы вышли из аккаунта"))
-				.catch((error) => console.error("Ошибка при выходе:", error));
-		});
-
-			  // Слушатель состояния авторизации (меняет интерфейс в зависимости от статуса)
- 		 onAuthStateChanged(auth, (user) => {
-   			 if (user) {
-     			 userStatus.textContent = `Вы вошли как: ${user.displayName || user.email}`;
-     			 loginGoogleBtn.style.display = 'none';
-     			 loginGithubBtn.style.display = 'none';
-     			 logOutBtn.style.display = 'inline-block';
-    		} else {
-    			  userStatus.textContent = "Вы не авторизованы";
-    			  loginGoogleBtn.style.display = 'inline-block';
-    			  loginGithubBtn.style.display = 'inline-block';
-    			  logOutBtn.style.display = 'none';
-   			 }
- 		 });
-  });
-    </script>
-
-<iframe src="https://discord.com/widget?id=1075499251695636490&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
-<iframe src="https://discord.com/widget?id=1478538078040887389&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
-
-
+	<ul>
+		<li>Первый факт: Казанский собор прикольни (субьективное мнение автора на которое всем наср</li>
+		<li>Второй факт: А если серьёзно то это реально чудо, в начале XIX(19)-го века постороить такую огромную и красивую махину. Тогда ещё даже кранов не было</li>
+		<li>Третий факт: Раньше Казанский Собор считался одним из чудес света, но чёта както передумали чувачки</li>
+	</ul> 
+	
+	<p><a href="#gallery">Перейти к галерее</a></p> 
+	<p><a href="https://reddflower.github.io" target="_blank">Тематический источник</a></p> 
+	</section> 
+	
+	<a class="button" href="#gallery">Смотреть фотографии (Галерея)</a> 
+	<a class="button" href="#history">Вернутся к истории</a> 
+	<a class="button" href="#info">Вернутся к краткой инфе</a> 
+	
+	<footer><p>Автор: Бохан Данил, 25290909/3091, 2026 (подвал с данными автора, и самим автором)</p></footer> 
+	</main> 
+</body> 
+</html>
 </body>
 </html>
